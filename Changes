@@ -1,0 +1,7 @@
+Changes file for Business::FO::Postalcode
+
+0.01 2014.04.12 - Initial release
+
+- Implementing the following features:
+
+    - Data container for postalcodes from Greenland (GL)
