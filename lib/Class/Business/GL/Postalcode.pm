@@ -7,6 +7,8 @@ use utf8;
 use constant NUM_OF_DIGITS_IN_POSTALCODE => 4;
 use constant NUM_OF_DATA_ELEMENTS => 6;
 
+our $VERSION = '0.01';
+
 sub new {
     my $class = shift;
 
