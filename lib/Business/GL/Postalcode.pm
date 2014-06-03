@@ -33,4 +33,44 @@ sub get_all_postalcodes {
 
 =pod
 
+=head1 NAME
+
+Class::Business::GL::Postalcode - 
+
+=head1 VERSION
+
+This documentation describes version 0.01
+
+=head1 SYNOPSIS
+
+=head1 DESCRIPTION
+
+=head1 BUGS
+
+Please report issues via CPAN RT:
+
+  http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-GL-Postalcode
+
+or by sending mail to
+
+  bug-Business-GL-Postalcode@rt.cpan.org
+
+=head1 SEE ALSO
+
+=over
+
+=item L<Business::DK::Postalcode>
+
+=back
+
+=head1 AUTHOR
+
+Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
+
+=head1 COPYRIGHT
+
+Business-GL-Postalcode is (C) by Jonas B. Nielsen, (jonasbn) 2014
+
+Business-GL-Postalcode is released under the artistic license 2.0
+
 =cut
