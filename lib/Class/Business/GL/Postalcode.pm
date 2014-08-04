@@ -3,6 +3,7 @@ package Class::Business::GL::Postalcode;
 use strict;
 use warnings;
 use utf8;
+use Data::Handle;
 
 use constant NUM_OF_DIGITS_IN_POSTALCODE => 4;
 use constant NUM_OF_DATA_ELEMENTS => 6;
@@ -14,9 +15,14 @@ sub new {
 
     my $self = bless ({}, $class);
 
-    my @postal_data = <DATA>;
+    #seek DATA, 0, 0;
+    #my @postal_data = <DATA>;
+
+    my $handle = Data::Handle->new( __PACKAGE__ );
+    my @postal_data = $handle->getlines();
 
     $self->{postal_data} = \@postal_data;
+
 
     return $self;
 }
@@ -32,11 +38,11 @@ sub get_all_postalcodes {
     my @postalcodes = ();
 
     if ( not $parameter_data ) {
-        $parameter_data = $self->{postal_data};
+        $parameter_data = $self->postal_data;
     }
 
-    foreach my $zipcode ( @{$parameter_data} ) {
-        $self->_retrieve_postalcode( \@postalcodes, $zipcode );
+    foreach my $line ( @{$parameter_data} ) {
+        $self->_retrieve_postalcode( \@postalcodes, $line );
     }
 
     return \@postalcodes;

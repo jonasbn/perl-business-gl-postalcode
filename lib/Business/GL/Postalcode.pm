@@ -3,7 +3,8 @@ package Business::GL::Postalcode;
 use strict;
 use warnings;
 
-use List::MoreUtils qw(any);
+use List::MoreUtils qw(any all);
+use List::Util qw(first);
 use Class::Business::GL::Postalcode;
 
 require Exporter;
@@ -36,11 +37,13 @@ sub validate {
 }
 
 sub validate_postalcode {
+    my $number = shift;
+
     my $self = Class::Business::GL::Postalcode->new();
 
     my $postalcodes = $self->get_all_postalcodes();
 
-    if (any { defined($_[0]) } @{$postalcodes}) {
+    if (first { $number == $_ } @{$postalcodes}) {
         return TRUE;
     } else {
         return FALSE;

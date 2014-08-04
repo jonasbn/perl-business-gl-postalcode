@@ -10,11 +10,24 @@ use Tree::Simple;
 use Test::Exception;
 use Env qw($TEST_VERBOSE);
 
-sub startup : Test(startup => 1) {
+sub startup : Test(startup => 2) {
     my $self = shift;
 
     use_ok( 'Business::GL::Postalcode', qw(validate_postalcode get_all_postalcodes get_all_data) );
+    use_ok( 'Class::Business::GL::Postalcode' );
 };
+
+sub test_new : Test(2) {
+    ok(my $cbglpst = Class::Business::GL::Postalcode->new(), 'calling new postalcodes');
+
+    is(scalar(@{$cbglpst->{postal_data}}), 33, 'asserting number of postalcodes');
+}
+
+sub test_postal_data : Test(2) {
+    ok(my $cbglpst = Class::Business::GL::Postalcode->new(), 'calling get all postalcodes');
+
+    is(scalar(@{$cbglpst->postal_data()}), 33, 'asserting number of postalcodes');
+}
 
 sub test_get_all_postalcodes : Test(2) {
     ok(my $postalcodes_ref = get_all_postalcodes(), 'calling get all postalcodes');
@@ -33,7 +46,7 @@ sub test_validate : Test(5) {
     my @invalids = qw();
     my @valids = qw();
 
-    foreach (1 .. 9999) {
+    foreach (0 .. 9999) {
         my $number = sprintf '%04d', $_;
         if (not validate_postalcode($number)) {
             push @invalids, $number;
