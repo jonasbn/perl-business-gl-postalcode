@@ -2,6 +2,8 @@ package Business::GL::Postalcode;
 
 use strict;
 use warnings;
+
+use List::MoreUtils qw(any);
 use Class::Business::GL::Postalcode;
 
 require Exporter;
@@ -26,7 +28,23 @@ sub get_all_data {
 sub get_all_postalcodes {
     my $self = Class::Business::GL::Postalcode->new();
 
-    return $self->postal_data;
+    return $self->get_all_postalcodes;
+}
+
+sub validate {
+    return validate_postalcode( $_[0] );
+}
+
+sub validate_postalcode {
+    my $self = Class::Business::GL::Postalcode->new();
+
+    my $postalcodes = $self->get_all_postalcodes();
+
+    if (any { defined($_[0]) } @{$postalcodes}) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 1;
@@ -35,13 +53,17 @@ sub get_all_postalcodes {
 
 =head1 NAME
 
-Class::Business::GL::Postalcode - 
+Business::GL::Postalcode - interface to validation and listing of Greenland postalcodes
 
 =head1 VERSION
 
 This documentation describes version 0.01
 
 =head1 SYNOPSIS
+
+    use Business::GL::Postalcode qw(get_all_postalcodes);
+
+    my @postalcodes = get_all_postalcodes();
 
 =head1 DESCRIPTION
 
@@ -62,6 +84,12 @@ or by sending mail to
 =item L<Business::DK::Postalcode>
 
 =back
+
+=head1 MOTIVATION
+
+Postdanmark the largest danish postal and formerly stateowned postal service, maintain the 
+postalcode mapping for Greenland and the Faroe Islands. Since I am using this resource to 
+maintain the danish postalcodes I decided to release distributions of these two other countries.
 
 =head1 AUTHOR
 
