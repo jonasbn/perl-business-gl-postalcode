@@ -32,7 +32,7 @@ sub get_all_postalcodes {
     my @postalcodes = ();
 
     if ( not $parameter_data ) {
-        @{$parameter_data} = $self->{postal_data};
+        $parameter_data = $self->{postal_data};
     }
 
     foreach my $zipcode ( @{$parameter_data} ) {
@@ -67,13 +67,15 @@ sub _retrieve_postalcode {
 
 =head1 NAME
 
-Class::Business::GL::Postalcode - 
+Class::Business::GL::Postalcode - OOP interface to validation and listing of Greenland postalcodes
 
 =head1 VERSION
 
 This documentation describes version 0.01
 
 =head1 SYNOPSIS
+
+
 
 =head1 DESCRIPTION
 
