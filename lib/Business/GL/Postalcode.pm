@@ -2,6 +2,7 @@ package Business::GL::Postalcode;
 
 use strict;
 use warnings;
+use 5.010; #5.10.0
 
 use Class::Business::GL::Postalcode;
 

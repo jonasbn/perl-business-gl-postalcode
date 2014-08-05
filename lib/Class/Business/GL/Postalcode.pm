@@ -6,6 +6,7 @@ use utf8;
 use Data::Handle;
 use List::Util qw(first);
 use Readonly;
+use 5.010; #5.10.0
 
 use constant NUM_OF_DIGITS_IN_POSTALCODE => 4;
 use constant NUM_OF_DATA_ELEMENTS        => 6;
@@ -132,7 +133,7 @@ sub get_postalcode_from_city {
 
 =head1 NAME
 
-Class::Business::GL::Postalcode - OOP interface to validation and listing of Greenland postalcodes
+Class::Business::GL::Postalcode - OO interface to validation and listing of Greenland postal codes
 
 =head1 VERSION
 
