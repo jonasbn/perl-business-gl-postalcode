@@ -42,7 +42,7 @@ sub validate_postalcode {
 
 =head1 NAME
 
-Business::GL::Postalcode - interface to validation and listing of Greenland postalcodes
+Business::GL::Postalcode - validation and listing of Greenland postal codes
 
 =head1 VERSION
 
@@ -50,9 +50,51 @@ This documentation describes version 0.01
 
 =head1 SYNOPSIS
 
+    # basic validation of string
+    use Business::GL::Postalcode qw(validate);
+
+    if (validate($postalcode)) {
+        print "We have a valid Greenland postal code\n";
+    } else {
+        warn "Not a valid Greenland postal code\n";
+    }
+
+
+    # basic validation of string, using less intrusive subroutine
+    use Business::GL::Postalcode qw(validate_postalcode);
+
+    if (validate_postalcode($postalcode)) {
+        print "We have a valid Greenland postal code\n";
+    } else {
+        warn "Not a valid Greenland postal code\n";
+    }
+
+
+    # using the untainted return value
+    use Business::GL::Postalcode qw(validate_postalcode);
+
+    if (my $untainted = validate_postalcode($postalcode)) {
+        print "We have a valid Greenland postal code: $untainted\n";
+    } else {
+        warn "Not a valid Greenland postal code\n";
+    }
+
+
+    # All postal codes for use outside this module
     use Business::GL::Postalcode qw(get_all_postalcodes);
 
-    my @postalcodes = get_all_postalcodes();
+    my @postalcodes = @{get_all_postalcodes()};
+
+
+    # All postal codes and data for use outside this module
+    use Business::GL::Postalcode qw(get_all_data);
+
+    my $postalcodes = get_all_data();
+
+    foreach (@{postalcodes}) {
+        printf
+            'postalcode: %s city: %s street/desc: %s company: %s province: %d country: %d', split /;/, $_, 6;
+    }
 
 =head1 DESCRIPTION
 
@@ -71,6 +113,8 @@ or by sending mail to
 =over
 
 =item L<Business::DK::Postalcode>
+
+=item L<Business::FO::Postalcode>
 
 =back
 
