@@ -1,7 +1,5 @@
 package Test::Class::Business::GL::Postalcode;
 
-# $Id$
-
 use strict;
 use warnings;
 use base qw(Test::Class);
@@ -13,7 +11,7 @@ use Env qw($TEST_VERBOSE);
 sub startup : Test(startup => 2) {
     my $self = shift;
 
-    use_ok( 'Business::GL::Postalcode', qw(validate_postalcode get_all_postalcodes get_all_data) );
+    use_ok( 'Business::GL::Postalcode', qw(validate validate_postalcode get_all_postalcodes get_all_data) );
     use_ok( 'Class::Business::GL::Postalcode' );
 };
 
@@ -55,8 +53,27 @@ sub test_validate_postalcode : Test(2) {
         }
     }
 
-    is(scalar @invalids, 9967);
-    is(scalar @valids, 33);
+    is(scalar @invalids, 9967, 'asserting number of invalids for validate_postalcode');
+    is(scalar @valids, 33, 'asserting number of valids for validate_postalcode');
+}
+
+sub test_validate : Test(2) {
+    my $self = shift;
+
+    my @invalids = qw();
+    my @valids = qw();
+
+    foreach (0 .. 9999) {
+        my $number = sprintf '%04d', $_;
+        if (not validate($number)) {
+            push @invalids, $number;
+        } else {
+            push @valids, $number;
+        }
+    }
+
+    is(scalar @invalids, 9967, 'asserting number of invalids for validate');
+    is(scalar @valids, 33, 'asserting number of valids for validate');
 }
 
 1;
