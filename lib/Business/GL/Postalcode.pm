@@ -12,12 +12,6 @@ our @EXPORT_OK = qw(get_all_data get_all_postalcodes validate_postalcode validat
 
 our $VERSION = '0.01';
 
-use constant DEBUG                       => 0;
-use constant TRUE                        => 1;
-use constant FALSE                       => 0;
-use constant NUM_OF_DATA_ELEMENTS        => 6;
-use constant NUM_OF_DIGITS_IN_POSTALCODE => 4;
-
 sub get_all_data {
     my $validator = Class::Business::GL::Postalcode->new();
 
