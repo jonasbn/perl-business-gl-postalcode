@@ -5,11 +5,14 @@ use warnings;
 use utf8;
 use Data::Handle;
 use List::Util qw(first);
+use Readonly;
 
 use constant NUM_OF_DIGITS_IN_POSTALCODE => 4;
 use constant NUM_OF_DATA_ELEMENTS        => 6;
 use constant TRUE                        => 1;
 use constant FALSE                       => 0;
+
+Readonly::Scalar my $SEPARATOR => ';';
 
 our $VERSION = '0.01';
 
@@ -55,7 +58,7 @@ sub _retrieve_postalcode {
     my ( $self, $postalcodes, $string ) = @_;
 
     ## no critic qw(RegularExpressions::RequireLineBoundaryMatching RegularExpressions::RequireExtendedFormatting RegularExpressions::RequireDotMatchAnything)
-    my @entries = split /;/x, $string, NUM_OF_DATA_ELEMENTS;
+    my @entries = split /$SEPARATOR/x, $string, NUM_OF_DATA_ELEMENTS;
 
     if ($entries[0] =~ m{
         ^ #beginning of string
@@ -92,7 +95,7 @@ sub get_city_from_postalcode {
 
     my $city = '';
     foreach my $line (@{$postaldata}) {
-        my @entries = split /\t/x, $line, NUM_OF_DATA_ELEMENTS;
+        my @entries = split /$SEPARATOR/x, $line, NUM_OF_DATA_ELEMENTS;
 
         if ($entries[0] eq $postalcode) {
             $city = $entries[1];
@@ -113,7 +116,7 @@ sub get_postalcode_from_city {
 
     my @postalcodes;
     foreach my $line (@{$postaldata}) {
-        my @entries = split /\t/x, $line, NUM_OF_DATA_ELEMENTS;
+        my @entries = split /$SEPARATOR/x, $line, NUM_OF_DATA_ELEMENTS;
 
         if ($entries[1] =~ m/$city$/i) {
             push @postalcodes, $entries[0];
