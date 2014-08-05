@@ -8,26 +8,26 @@ use Class::Business::GL::Postalcode;
 require Exporter;
 
 our @ISA = qw(Exporter);
-our @EXPORT_OK = qw(get_all_data get_all_postalcodes validate_postalcode validate);
+our @EXPORT_OK = qw(get_all_data get_all_postalcodes get_all_cities get_postalcode_from_city get_city_from_postalcode validate_postalcode validate);
 
 our $VERSION = '0.01';
 
 sub get_all_data {
     my $validator = Class::Business::GL::Postalcode->new();
 
-    return $validator->postal_data;
+    return $validator->postal_data();
 }
 
 sub get_all_postalcodes {
     my $validator = Class::Business::GL::Postalcode->new();
 
-    return $validator->get_all_postalcodes;
+    return $validator->get_all_postalcodes();
 }
 
 sub get_all_cities {
     my $validator = Class::Business::GL::Postalcode->new();
 
-    return $validator->get_all_cities;
+    return $validator->get_all_cities();
 }
 
 sub get_city_from_postalcode {
@@ -49,7 +49,7 @@ sub validate {
 sub validate_postalcode {
     my $validator = Class::Business::GL::Postalcode->new();
 
-    return $validator->validate($_[0]);
+    return $validator->validate( $_[0] );
 }
 
 1;
