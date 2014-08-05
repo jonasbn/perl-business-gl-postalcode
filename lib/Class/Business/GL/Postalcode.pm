@@ -4,9 +4,12 @@ use strict;
 use warnings;
 use utf8;
 use Data::Handle;
+use List::Util qw(first);
 
 use constant NUM_OF_DIGITS_IN_POSTALCODE => 4;
-use constant NUM_OF_DATA_ELEMENTS => 6;
+use constant NUM_OF_DATA_ELEMENTS        => 6;
+use constant TRUE                        => 1;
+use constant FALSE                       => 0;
 
 our $VERSION = '0.01';
 
@@ -65,6 +68,18 @@ sub _retrieve_postalcode {
     }
 
     return;
+}
+
+sub validate {
+    my ($self, $number) = @_;
+
+    my $postalcodes = $self->get_all_postalcodes();
+
+    if (first { $number == $_ } @{$postalcodes}) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 1;
