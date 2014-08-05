@@ -24,6 +24,24 @@ sub get_all_postalcodes {
     return $validator->get_all_postalcodes;
 }
 
+sub get_all_cities {
+    my $validator = Class::Business::GL::Postalcode->new();
+
+    return $validator->get_all_cities;
+}
+
+sub get_city_from_postalcode {
+    my $validator = Class::Business::GL::Postalcode->new();
+
+    return $validator->get_city_from_postalcode( $_[0] );
+}
+
+sub get_postalcode_from_city {
+    my $validator = Class::Business::GL::Postalcode->new();
+
+    return $validator->get_postalcode_from_city( $_[0] );
+}
+
 sub validate {
     return validate_postalcode( $_[0] );
 }
@@ -91,8 +109,18 @@ This documentation describes version 0.01
 
     foreach (@{postalcodes}) {
         printf
-            'postalcode: %s city: %s street/desc: %s company: %s province: %d country: %d', split /;/, $_, 6;
+            'postal code: %s city: %s street/desc: %s company: %s province: %d country: %d', split /;/, $_, 6;
     }
+
+=head1 FEATURES
+
+=over
+
+=item * Providing list of Greenland postal codes and related area names
+
+=item * Look up methods for Greenland postal codes for web applications and the like
+
+=back
 
 =head1 DESCRIPTION
 
