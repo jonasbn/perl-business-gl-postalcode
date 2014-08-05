@@ -3,8 +3,6 @@ package Business::GL::Postalcode;
 use strict;
 use warnings;
 
-use List::MoreUtils qw(any all);
-use List::Util qw(first);
 use Class::Business::GL::Postalcode;
 
 require Exporter;
@@ -21,15 +19,15 @@ use constant NUM_OF_DATA_ELEMENTS        => 6;
 use constant NUM_OF_DIGITS_IN_POSTALCODE => 4;
 
 sub get_all_data {
-    my $self = Class::Business::GL::Postalcode->new();
+    my $validator = Class::Business::GL::Postalcode->new();
 
-    return $self->postal_data;
+    return $validator->postal_data;
 }
 
 sub get_all_postalcodes {
-    my $self = Class::Business::GL::Postalcode->new();
+    my $validator = Class::Business::GL::Postalcode->new();
 
-    return $self->get_all_postalcodes;
+    return $validator->get_all_postalcodes;
 }
 
 sub validate {
@@ -39,15 +37,9 @@ sub validate {
 sub validate_postalcode {
     my $number = shift;
 
-    my $self = Class::Business::GL::Postalcode->new();
+    my $validator = Class::Business::GL::Postalcode->new();
 
-    my $postalcodes = $self->get_all_postalcodes();
-
-    if (first { $number == $_ } @{$postalcodes}) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
+    return $validator->validate($number);
 }
 
 1;
