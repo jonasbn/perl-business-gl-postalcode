@@ -29,11 +29,9 @@ sub validate {
 }
 
 sub validate_postalcode {
-    my $number = shift;
-
     my $validator = Class::Business::GL::Postalcode->new();
 
-    return $validator->validate($number);
+    return $validator->validate($_[0]);
 }
 
 1;
