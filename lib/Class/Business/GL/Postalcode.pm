@@ -82,6 +82,47 @@ sub validate {
     }
 }
 
+sub get_city_from_postalcode {
+    my ($self, $postalcode) = @_;
+
+    #validate( @_, {
+    #    zipcode => { type => SCALAR, regex => qr/^\d+$/, }, });
+
+    my $postaldata = get_all_data();
+
+    my $city = '';
+    foreach my $line (@{$postaldata}) {
+        my @entries = split /\t/x, $line, NUM_OF_DATA_ELEMENTS;
+
+        if ($entries[0] eq $postalcode) {
+            $city = $entries[1];
+            last;
+        }
+    }
+
+    return $city;
+}
+
+sub get_postalcode_from_city {
+    my ($self, $city) = @_;
+
+    #validate( @_, {
+    #    city => { type => SCALAR, regex => qr/^[\w ]+$/, }, });
+
+    my $postaldata = get_all_data();
+
+    my @postalcodes;
+    foreach my $line (@{$postaldata}) {
+        my @entries = split /\t/x, $line, NUM_OF_DATA_ELEMENTS;
+
+        if ($entries[1] =~ m/$city$/i) {
+            push @postalcodes, $entries[0];
+        }
+    }
+
+    return @postalcodes;
+}
+
 1;
 
 =pod
