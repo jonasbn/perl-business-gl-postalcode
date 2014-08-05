@@ -40,7 +40,7 @@ sub test_get_all_data : Test(2) {
     is(scalar(@{$postalcodes_ref}), 33, 'asserting number of postalcodes');
 }
 
-sub test_validate : Test(2) {
+sub test_validate_postalcode : Test(2) {
     my $self = shift;
 
     my @invalids = qw();
