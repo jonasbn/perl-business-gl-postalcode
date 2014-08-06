@@ -136,6 +136,12 @@ sub get_postalcode_from_city {
 
 =pod
 
+=begin HTML
+
+<a href="https://travis-ci.org/jonasbn/perl-Business-GL-Postalcode"><img src="https://travis-ci.org/jonasbn/perl-Business-GL-Postalcode.svg?branch=master"></a>
+
+=end HTML
+
 =head1 NAME
 
 Class::Business::GL::Postalcode - OO interface to validation and listing of Greenland postal codes

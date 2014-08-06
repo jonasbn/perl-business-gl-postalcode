@@ -57,6 +57,12 @@ sub validate_postalcode {
 
 =pod
 
+=begin HTML
+
+<a href="https://travis-ci.org/jonasbn/perl-Business-GL-Postalcode"><img src="https://travis-ci.org/jonasbn/perl-Business-GL-Postalcode.svg?branch=master"></a>
+
+=end HTML
+
 =head1 NAME
 
 Business::GL::Postalcode - validation and listing of Greenland postal codes
