@@ -38,32 +38,24 @@ sub test_get_all_postalcodes : Test(2) {
     is(scalar(@{$postalcodes_ref}), 33), 'asserting number of postalcodes';
 }
 
-sub test_get_all_data : Test(2) {
-    my $t = shift;
+# sub test_get_all_data : Test(2) {
+#     my $t = shift;
 
-    my $validator = $t->{validator};
+#     my $validator = $t->{validator};
 
-    ok(my $postalcodes_ref = $validator->get_all_data(), 'calling get_all_data');
+#     ok(my $postalcodes_ref = $validator->get_all_data(), 'calling get_all_data');
 
-    is(scalar(@{$postalcodes_ref}), 33, 'asserting number of postalcodes');
-}
-
-sub test_get_postalcode_from_city : Test(2) {
-    my $t = shift;
-
-    my $validator = $t->{validator};
-
-    ok(my $postal_code = $validator->get_postalcode_from_city('Vallensbæk Strand'), 'calling get_postalcode_from_city');
-    is($postal_code, '2665', 'asserting postal code');
-}
+#     is(scalar(@{$postalcodes_ref}), 33, 'asserting number of postalcodes');
+# }
 
 sub test_get_postalcode_from_city : Test(2) {
     my $t = shift;
 
     my $validator = $t->{validator};
 
-    ok(my $postal_code = $validator->get_postalcode_from_city('Vallensbæk Strand'), 'calling get_postalcode_from_city');
-    is($postal_code, '2665', 'asserting postal code');
+    ok(my @postal_codes = $validator->get_postalcode_from_city('Nuuk'), 'calling get_postalcode_from_city');
+
+    is($postal_codes[0], '3900', 'asserting postal code');
 }
 
 sub test_get_city_from_postalcode : Test(2) {
@@ -71,8 +63,9 @@ sub test_get_city_from_postalcode : Test(2) {
 
     my $validator = $t->{validator};
 
-    ok(my $city = $validator->get_postalcode_from_city('2620'), 'calling get_city_from_postalcode');
-    is($postal_code, 'Albertslund', 'asserting city');
+    ok(my $city = $validator->get_city_from_postalcode('3900'), 'calling get_city_from_postalcode');
+
+    is($city, 'Nuuk', 'asserting city');
 }
 
 sub test_validate : Test(2) {

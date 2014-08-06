@@ -97,7 +97,7 @@ sub get_city_from_postalcode {
     #validate( @_, {
     #    zipcode => { type => SCALAR, regex => qr/^\d+$/, }, });
 
-    my $postaldata = get_all_data();
+    my $postaldata = $self->postal_data();
 
     my $city = '';
     foreach my $line (@{$postaldata}) {
@@ -118,7 +118,7 @@ sub get_postalcode_from_city {
     #validate( @_, {
     #    city => { type => SCALAR, regex => qr/^[\w ]+$/, }, });
 
-    my $postaldata = get_all_data();
+    my $postaldata = $self->postal_data();
 
     my @postalcodes;
     foreach my $line (@{$postaldata}) {
