@@ -129,7 +129,7 @@ sub get_postalcode_from_city {
         }
     }
 
-    return @postalcodes;
+    return \@postalcodes;
 }
 
 1;
