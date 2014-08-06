@@ -9,7 +9,7 @@ use Test::Exception;
 use Env qw($TEST_VERBOSE);
 
 sub startup : Test(startup => 1) {
-    use_ok( 'Business::GL::Postalcode', qw(get_all_postalcodes get_all_data validate_postalcode validate));
+    use_ok( 'Business::GL::Postalcode', qw(get_all_postalcodes get_all_data validate_postalcode validate get_postalcode_from_city get_city_from_postalcode));
 };
 
 sub test_get_all_postalcodes : Test(2) {
@@ -59,6 +59,22 @@ sub test_validate : Test(2) {
 
     is(scalar @invalids, 9967, 'asserting number of invalids for validate');
     is(scalar @valids, 33, 'asserting number of valids for validate');
+}
+
+sub test_get_postalcode_from_city : Test(2) {
+    my $t = shift;
+
+    ok(my $postal_codes = get_postalcode_from_city('Nuuk'), 'calling get_postalcode_from_city');
+
+    is($postal_codes->[0], '3900', 'asserting postal code');
+}
+
+sub test_get_city_from_postalcode : Test(2) {
+    my $t = shift;
+
+    ok(my $city = get_city_from_postalcode('3900'), 'calling get_city_from_postalcode');
+
+    is($city, 'Nuuk', 'asserting city');
 }
 
 1;

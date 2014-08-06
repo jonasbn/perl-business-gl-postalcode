@@ -9,14 +9,14 @@ use Test::Exception;
 use Env qw($TEST_VERBOSE);
 use utf8;
 
-sub startup : Test(startup => 4) {
+sub startup : Test(startup => 3) {
     my $t = shift;
 
     use_ok( 'Class::Business::GL::Postalcode' );
 
     ok(my $validator = Class::Business::GL::Postalcode->new(), 'calling new');
 
-    is(scalar(@{$validator->{postal_data}}), 33, 'asserting number of postalcodes');
+    is(scalar(@{$validator->postal_data()}), 33, 'asserting number of postal codes');
 
     $t->{validator} = $validator;
 };
@@ -26,7 +26,7 @@ sub test_postal_data : Test(1) {
 
     my $validator = $t->{validator};
 
-    is(scalar(@{$t->{validator}->postal_data()}), 33, 'asserting number of postalcodes');
+    is(scalar(@{$validator->postal_data()}), 33, 'asserting number of postal codes');
 }
 
 sub test_get_all_postalcodes : Test(2) {
@@ -34,8 +34,8 @@ sub test_get_all_postalcodes : Test(2) {
 
     my $validator = $t->{validator};
 
-    ok(my $postalcodes_ref = $validator->get_all_postalcodes(), 'calling get all postalcodes');
-    is(scalar(@{$postalcodes_ref}), 33), 'asserting number of postalcodes';
+    ok(my $postalcodes_ref = $validator->get_all_postalcodes(), 'calling get all postal codes');
+    is(scalar(@{$postalcodes_ref}), 33), 'asserting number of postal codes';
 }
 
 # sub test_get_all_data : Test(2) {
