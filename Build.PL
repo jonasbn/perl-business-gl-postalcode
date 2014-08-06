@@ -34,7 +34,6 @@ my $build = Module::Build->new(
     requires => {
         'Exporter'         => '0',       #core
         'Carp'             => '0',       #core
-        'Tree::Simple'     => '0',
         'Params::Validate' => '0',
         'Scalar::Util'     => '0',
         'List::Util'       => '0',
