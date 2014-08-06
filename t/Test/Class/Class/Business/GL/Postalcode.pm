@@ -7,6 +7,7 @@ use Test::More;
 use Tree::Simple;
 use Test::Exception;
 use Env qw($TEST_VERBOSE);
+use utf8;
 
 sub startup : Test(startup => 4) {
     my $t = shift;
@@ -45,6 +46,24 @@ sub test_get_all_data : Test(2) {
     ok(my $postalcodes_ref = $validator->get_all_data(), 'calling get_all_data');
 
     is(scalar(@{$postalcodes_ref}), 33, 'asserting number of postalcodes');
+}
+
+sub test_get_postalcode_from_city : Test(2) {
+    my $t = shift;
+
+    my $validator = $t->{validator};
+
+    ok(my $postal_code = $validator->get_postalcode_from_city('Vallensbæk Strand'), 'calling get_postalcode_from_city');
+    is($postal_code, '2665', 'asserting postal code');
+}
+
+sub test_get_postalcode_from_city : Test(2) {
+    my $t = shift;
+
+    my $validator = $t->{validator};
+
+    ok(my $postal_code = $validator->get_postalcode_from_city('Vallensbæk Strand'), 'calling get_postalcode_from_city');
+    is($postal_code, '2665', 'asserting postal code');
 }
 
 sub test_validate : Test(2) {
