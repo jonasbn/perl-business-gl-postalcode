@@ -53,9 +53,9 @@ sub test_get_postalcode_from_city : Test(2) {
 
     my $validator = $t->{validator};
 
-    ok(my @postal_codes = $validator->get_postalcode_from_city('Nuuk'), 'calling get_postalcode_from_city');
+    ok(my $postal_codes = $validator->get_postalcode_from_city('Nuuk'), 'calling get_postalcode_from_city');
 
-    is($postal_codes[0], '3900', 'asserting postal code');
+    is($postal_codes->[0], '3900', 'asserting postal code');
 }
 
 sub test_get_city_from_postalcode : Test(2) {
