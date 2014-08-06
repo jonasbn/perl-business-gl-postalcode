@@ -66,6 +66,15 @@ sub test_get_postalcode_from_city : Test(2) {
     is($postal_code, '2665', 'asserting postal code');
 }
 
+sub test_get_city_from_postalcode : Test(2) {
+    my $t = shift;
+
+    my $validator = $t->{validator};
+
+    ok(my $city = $validator->get_postalcode_from_city('2620'), 'calling get_city_from_postalcode');
+    is($postal_code, 'Albertslund', 'asserting city');
+}
+
 sub test_validate : Test(2) {
     my $t = shift;
 
