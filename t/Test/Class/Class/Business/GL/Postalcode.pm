@@ -4,8 +4,6 @@ use strict;
 use warnings;
 use base qw(Test::Class);
 use Test::More;
-use Tree::Simple;
-use Test::Exception;
 use Env qw($TEST_VERBOSE);
 use utf8;
 
