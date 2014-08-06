@@ -28,16 +28,21 @@ sub new {
     my $handle = Data::Handle->new( __PACKAGE__ );
     my @postal_data = $handle->getlines();
 
-    $self->{postal_data} = \@postal_data;
-
+    $self->postal_data(\@postal_data);
 
     return $self;
 }
 
 sub postal_data {
-    my $self = shift;
+    my ($self, $postal_data) = @_;
 
-    return $self->{postal_data};
+    if ($postal_data) {
+        $self->{postal_data} = $postal_data;
+
+        return TRUE;
+    } else {
+        return $self->{postal_data};
+    }
 }
 
 sub get_all_postalcodes {
