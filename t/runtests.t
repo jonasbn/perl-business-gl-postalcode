@@ -1,9 +1,5 @@
 #!/usr/local/bin/perl -T
 
-# $Id$
-
-# $HeadURL$
-
 use strict;
 use warnings;
 
