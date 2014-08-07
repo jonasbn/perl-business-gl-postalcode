@@ -127,7 +127,7 @@ This documentation describes version 0.01
 
 =item * Look up methods for Greenland postal codes for web applications and the like
 
-=item * The postal code from Santa Claus (father Christmas)
+=item * The postal code for Santa Claus (father Christmas)
 
 =back
 
