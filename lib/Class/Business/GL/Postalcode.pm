@@ -30,7 +30,21 @@ sub new {
 
     $self->postal_data(\@postal_data);
 
+    $self->num_of_digits_in_postalcode(NUM_OF_DIGITS_IN_POSTALCODE);
+
     return $self;
+}
+
+sub num_of_digits_in_postalcode {
+    my ($self, $number) = @_;
+
+    if ($number) {
+        $self->{num_of_digits_in_postalcode} = $number;
+
+        return TRUE;
+    } else {
+        return $self->{num_of_digits_in_postalcode};
+    }
 }
 
 sub postal_data {
@@ -66,9 +80,11 @@ sub _retrieve_postalcode {
     ## no critic qw(RegularExpressions::RequireLineBoundaryMatching RegularExpressions::RequireExtendedFormatting RegularExpressions::RequireDotMatchAnything)
     my @entries = split /$SEPARATOR/x, $string, NUM_OF_DATA_ELEMENTS;
 
+    my $num_of_digits_in_postalcode = $self->num_of_digits_in_postalcode();
+
     if ($entries[0] =~ m{
         ^ #beginning of string
-        \d{${\NUM_OF_DIGITS_IN_POSTALCODE}} #digits in postalcode
+        \d{$num_of_digits_in_postalcode} #digits in postalcode
         $ #end of string
         }xsm
         )

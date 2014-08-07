@@ -1,5 +1,10 @@
 Changes file for Business::GL::Postalcode
 
+HEAD
+
+- Added new accessor: num_of_digits_in_postalcode
+
+
 0.01 2014.08.06 - Initial release
 
 - Implementing the following features:
