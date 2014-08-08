@@ -367,6 +367,16 @@ Please note that city names are not unique, hence the possibility of a list of p
         die "$city not found\n";
     }
 
+=head2 num_of_digits_in_postalcode
+
+Mutator to get/set the number of digits used to compose a Greenlandic postal code
+
+    my $validator = Business::GL::Postalcode->new();
+
+    my $rv = $validator->num_of_digits_in_postalcode(4);
+
+    my $digits = $validator->num_of_digits_in_postalcode();
+
 =head1 DIAGNOSTICS
 
 There are not special diagnostics apart from the ones related to the different
