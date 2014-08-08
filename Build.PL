@@ -37,6 +37,7 @@ my $build = Module::Build->new(
         'Params::Validate' => '0',
         'List::Util'       => '0',
         'Data::Handle'     => '0',
+        'perl'             => '5.10.0',
     },
     meta_merge => {
         resources => {
