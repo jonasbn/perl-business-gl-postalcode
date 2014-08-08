@@ -1,6 +1,8 @@
 Changes file for Business::GL::Postalcode
 
-HEAD
+0.02 2014.08.08 - Maintence release, update not necessary
+
+- Added perl requirement to Build.PL
 
 - Added new accessor: num_of_digits_in_postalcode
 
