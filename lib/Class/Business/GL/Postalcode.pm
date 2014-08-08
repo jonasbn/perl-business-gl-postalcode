@@ -15,7 +15,7 @@ use constant FALSE                       => 0;
 
 Readonly::Scalar my $SEPARATOR => ';';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new {
     my $class = shift;
@@ -164,7 +164,7 @@ Class::Business::GL::Postalcode - OO interface to validation and listing of Gree
 
 =head1 VERSION
 
-This documentation describes version 0.01
+This documentation describes version 0.02
 
 =head1 SYNOPSIS
 
