@@ -77,3 +77,7 @@
 
 # Devel::NYTProf files
 nytprof
+
+# SublimeText 2 project files
+\.sublime-project
+\.sublime-workspace
