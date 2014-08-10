@@ -60,14 +60,11 @@ sub postal_data {
 }
 
 sub get_all_postalcodes {
-    my ($self, $parameter_data) = @_;
+    my $self = shift;
+
     my @postalcodes = ();
 
-    if ( not $parameter_data ) {
-        $parameter_data = $self->postal_data;
-    }
-
-    foreach my $line ( @{$parameter_data} ) {
+    foreach my $line ( @{$self->postal_data} ) {
         $self->_retrieve_postalcode( \@postalcodes, $line );
     }
 
