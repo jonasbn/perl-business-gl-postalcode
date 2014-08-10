@@ -14,7 +14,7 @@ sub startup : Test(startup => 3) {
 
     ok(my $validator = Class::Business::GL::Postalcode->new(), 'calling new');
 
-    is(scalar(@{$validator->postal_data()}), 33, 'asserting number of postal codes');
+    is(scalar @{$validator->postal_data()}, 33, 'asserting number of postal codes');
 
     $t->{validator} = $validator;
 };
@@ -24,16 +24,29 @@ sub test_postal_data : Test(1) {
 
     my $validator = $t->{validator};
 
-    is(scalar(@{$validator->postal_data()}), 33, 'asserting number of postal codes');
+    is(scalar @{$validator->postal_data()}, 33, 'asserting number of postal codes');
 }
 
-sub test_get_all_postalcodes : Test(2) {
+sub test_get_all_postalcodes : Test(3) {
     my $t = shift;
 
     my $validator = $t->{validator};
 
     ok(my $postalcodes_ref = $validator->get_all_postalcodes(), 'calling get all postal codes');
-    is(scalar(@{$postalcodes_ref}), 33), 'asserting number of postal codes';
+    is(scalar @{$postalcodes_ref}, 33, 'asserting number of postal codes');
+
+    is($postalcodes_ref->[0], '2412', 'asserting postal code');
+}
+
+sub test_get_all_cities : Test(3) {
+    my $t = shift;
+
+    my $validator = $t->{validator};
+
+    ok(my $cities_ref = $validator->get_all_cities(), 'calling get all cities');
+    is(scalar @{$cities_ref}, 33, 'asserting number of postal codes');
+
+    is($cities_ref->[0], 'Santa Claus/Julemanden', 'asserting city name');
 }
 
 # sub test_get_all_data : Test(2) {

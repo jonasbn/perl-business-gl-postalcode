@@ -7,18 +7,27 @@ use Test::More;
 use Env qw($TEST_VERBOSE);
 
 sub startup : Test(startup => 1) {
-    use_ok( 'Business::GL::Postalcode', qw(get_all_postalcodes get_all_data validate_postalcode validate get_postalcode_from_city get_city_from_postalcode));
+    use_ok( 'Business::GL::Postalcode', qw(get_all_postalcodes get_all_cities get_all_data validate_postalcode validate get_postalcode_from_city get_city_from_postalcode));
 };
 
-sub test_get_all_postalcodes : Test(2) {
-    ok(my $postalcodes_ref = get_all_postalcodes(), 'calling get all postalcodes');
-    is(scalar(@{$postalcodes_ref}), 33), 'asserting number of postalcodes';
+sub test_get_all_postalcodes : Test(3) {
+    ok(my $postalcodes_ref = get_all_postalcodes(), 'calling get_all_postalcodes');
+    is(scalar @{$postalcodes_ref}, 33, 'asserting number of postal codes');
+
+    is($postalcodes_ref->[0], '2412', 'asserting postal code');
+}
+
+sub test_get_all_cities : Test(3) {
+    ok(my $cities_ref = get_all_cities(), 'calling get_all_cities');
+    is(scalar @{$cities_ref}, 33, 'asserting number of postal codes');
+
+    is($cities_ref->[0], 'Santa Claus/Julemanden', 'asserting city name');
 }
 
 sub test_get_all_data : Test(2) {
     ok(my $postalcodes_ref = get_all_data(), 'calling get_all_data');
 
-    is(scalar(@{$postalcodes_ref}), 33, 'asserting number of postalcodes');
+    is(scalar @{$postalcodes_ref}, 33, 'asserting number of postal codes');
 }
 
 sub test_validate_postalcode : Test(2) {

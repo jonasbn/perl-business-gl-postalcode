@@ -74,6 +74,18 @@ sub get_all_postalcodes {
     return \@postalcodes;
 }
 
+sub get_all_cities {
+    my ($self) = @_;
+
+    my @cities = ();
+
+    foreach my $line ( @{$self->postal_data} ) {
+        $self->_retrieve_city( \@cities, $line );
+    }
+
+    return \@cities;
+}
+
 sub _retrieve_postalcode {
     my ( $self, $postalcodes, $string ) = @_;
 
@@ -90,6 +102,27 @@ sub _retrieve_postalcode {
         )
     {
         push @{$postalcodes}, $entries[0];
+    }
+
+    return;
+}
+
+sub _retrieve_city {
+    my ( $self, $postalcodes, $string ) = @_;
+
+    ## no critic qw(RegularExpressions::RequireLineBoundaryMatching RegularExpressions::RequireExtendedFormatting RegularExpressions::RequireDotMatchAnything)
+    my @entries = split /$SEPARATOR/x, $string, NUM_OF_DATA_ELEMENTS;
+
+    my $num_of_digits_in_postalcode = $self->num_of_digits_in_postalcode();
+
+    if ($entries[0] =~ m{
+        ^ #beginning of string
+        \d{$num_of_digits_in_postalcode} #digits in postalcode
+        $ #end of string
+        }xsm
+        )
+    {
+        push @{$postalcodes}, $entries[1];
     }
 
     return;
