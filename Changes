@@ -1,6 +1,6 @@
 Changes file for Business::GL::Postalcode
 
-HEAD
+0.03 2014.08.15 - Feature release, update recommended
 
 - Added missing method get_all_cities
 

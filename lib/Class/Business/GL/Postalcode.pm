@@ -15,7 +15,7 @@ use constant FALSE                       => 0;
 
 Readonly::Scalar my $SEPARATOR => ';';
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub new {
     my $class = shift;
