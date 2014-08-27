@@ -55,13 +55,17 @@ sub validate_postalcode {
 
 1;
 
+__END__
+
 =pod
 
-=begin HTML
+=begin markdown
 
-<a href="https://travis-ci.org/jonasbn/perl-Business-GL-Postalcode"><img src="https://travis-ci.org/jonasbn/perl-Business-GL-Postalcode.svg?branch=master"></a>
+[![CPAN version](https://badge.fury.io/pl/Business-GL-Postalcode.svg)](http://badge.fury.io/pl/Business-GL-Postalcode)
+[![Build Status](https://travis-ci.org/jonasbn/perl-Business-GL-Postalcode.svg?branch=master)](https://travis-ci.org/jonasbn/perl-Business-GL-Postalcode)
+[![Coverage Status](https://coveralls.io/repos/jonasbn/perl-Business-GL-Postalcode/badge.png)](https://coveralls.io/r/jonasbn/perl-Business-GL-Postalcode)
 
-=end HTML
+=end markdown
 
 =head1 NAME
 
