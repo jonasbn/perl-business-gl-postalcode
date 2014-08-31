@@ -69,7 +69,7 @@ __END__
 
 =head1 NAME
 
-Business::GL::Postalcode - validation and listing of Greenland postal codes
+Business::GL::Postalcode - Greenland postal code validator and container
 
 =head1 VERSION
 
