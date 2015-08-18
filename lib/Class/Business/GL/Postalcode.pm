@@ -15,7 +15,7 @@ use constant FALSE                       => 0;
 
 Readonly::Scalar my $SEPARATOR => ';';
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub new {
     my $class = shift;
@@ -499,7 +499,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Class-Business-GL-Postalcode is (C) by Jonas B. Nielsen, (jonasbn) 2014
+Class-Business-GL-Postalcode is (C) by Jonas B. Nielsen, (jonasbn) 2014-2015
 
 Class-Business-GL-Postalcode is released under the artistic license 2.0
 
