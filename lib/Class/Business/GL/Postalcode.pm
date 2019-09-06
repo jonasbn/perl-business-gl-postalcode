@@ -199,7 +199,7 @@ This documentation describes version 0.02
 =head1 SYNOPSIS
 
     # construction
-    my $validator = Business::GL::Postalcode->new();
+    my $validator = Class::Business::GL::Postalcode->new();
 
     # basic validation of string
     if ($validator->validate($postalcode)) {
@@ -211,10 +211,6 @@ This documentation describes version 0.02
 
     # All postal codes for use outside this module
     my @postalcodes = @{$validator->get_all_postalcodes()};
-
-
-    # All postal codes and data for use outside this module
-    my $postalcodes = $validator->get_all_data();
 
     foreach (@{postalcodes}) {
         printf
@@ -245,9 +241,7 @@ subroutines depending on your needs:
 
 =over
 
-=item * L</get_all_data>, to retrieve all data, data description below in L</Data>.
-
-=item * L</get_all_postalcodes>, to retrieve all postal codes
+=item * L</get_all_postalcodes>, to retrieve all postal codes, data description below in L</Data>.
 
 =item * L</get_all_cities>, to retieve all cities
 
