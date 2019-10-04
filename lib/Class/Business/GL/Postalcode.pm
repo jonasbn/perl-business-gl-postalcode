@@ -15,15 +15,12 @@ use constant FALSE                       => 0;
 
 Readonly::Scalar my $SEPARATOR => ';';
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 sub new {
     my $class = shift;
 
     my $self = bless ({}, $class);
-
-    #seek DATA, 0, 0;
-    #my @postal_data = <DATA>;
 
     my $handle = Data::Handle->new( __PACKAGE__ );
     my @postal_data = $handle->getlines();
@@ -493,7 +490,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Class-Business-GL-Postalcode is (C) by Jonas B. Nielsen, (jonasbn) 2014-2015
+Class-Business-GL-Postalcode is (C) by Jonas B., (jonasbn) 2014-2019
 
 Class-Business-GL-Postalcode is released under the artistic license 2.0
 

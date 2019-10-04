@@ -400,7 +400,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-GL-Postalcode is (C) by Jonas B. Nielsen, (jonasbn) 2014-2015
+Business-GL-Postalcode is (C) by Jonas B., (jonasbn) 2014-2019
 
 Business-GL-Postalcode is released under the artistic license 2.0
 
