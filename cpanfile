@@ -20,7 +20,7 @@ on 'test', sub {
     requires 'Test::Class';
     requires 'Test::Fatal';
     requires 'Test::Kwalitee', '1.28';
-    requires 'Test::More', '0.88';
+    requires 'Test::More', '1.302195';
     requires 'Test::Pod', '1.52';
     requires 'Test::Pod::Coverage', '1.10';
     requires 'Test::Tester', '1.302195';
