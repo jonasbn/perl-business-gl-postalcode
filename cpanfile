@@ -20,10 +20,10 @@ on 'test', sub {
     requires 'Test::Class';
     requires 'Test::Fatal';
     requires 'Test::Kwalitee', '1.28';
-    requires 'Test::More', '0.88';
+    requires 'Test::More', '1.302209';
     requires 'Test::Pod', '1.52';
     requires 'Test::Pod::Coverage', '1.10';
-    requires 'Test::Tester', '1.302195';
+    requires 'Test::Tester', '1.302209';
 };
 
 on 'configure', sub {
@@ -34,7 +34,7 @@ on 'configure', sub {
 on 'develop', sub {
     requires 'Data::Dumper';
     requires 'Pod::Coverage::TrustPod';
-    requires 'Test::CPAN::Changes', '0.400002';
+    requires 'Test::CPAN::Changes', '0.500004';
     requires 'Test::CPAN::Meta::JSON', '0.16';
     requires 'Test::Kwalitee', '1.28';
     requires 'Test::Perl::Critic';
