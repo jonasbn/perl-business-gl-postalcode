@@ -23,7 +23,7 @@ on 'test', sub {
     requires 'Test::More', '1.302211';
     requires 'Test::Pod', '1.52';
     requires 'Test::Pod::Coverage', '1.10';
-    requires 'Test::Tester', '1.302211';
+    requires 'Test::Tester', '1.302212';
 };
 
 on 'configure', sub {
